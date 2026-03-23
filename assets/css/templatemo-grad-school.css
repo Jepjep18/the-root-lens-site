@@ -2229,3 +2229,239 @@ footer {
     background: linear-gradient(180deg, #e7f2ed 0%, #f9fcfa 100%);
   }
 }
+
+section.blog-showcase {
+    padding: 100px 0 110px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(241, 247, 244, 0.96)),
+      linear-gradient(135deg, rgba(31, 90, 77, 0.04), transparent 45%);
+}
+
+section.blog-showcase .section-heading {
+    margin-bottom: 24px;
+}
+
+section.blog-showcase .section-heading h2 {
+    margin-top: 0;
+}
+
+.blog-intro {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.blog-intro p {
+    font-size: 16px;
+    line-height: 30px;
+    color: var(--theme-muted);
+}
+
+.blog-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.blog-card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(31, 90, 77, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--theme-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
+.blog-meta {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background-color: rgba(31, 90, 77, 0.08);
+    color: var(--theme-pink-dark);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.blog-card h4 {
+    margin: 0;
+    color: var(--theme-ink);
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.blog-card p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 28px;
+    color: var(--theme-muted);
+}
+
+.blog-read-more {
+    margin-top: auto;
+    width: fit-content;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--theme-pink);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+}
+
+.blog-read-more:hover {
+    color: var(--theme-pink-dark);
+}
+
+.blog-article-store {
+    display: none;
+}
+
+.blog-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 999;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.blog-modal.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.blog-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(14, 31, 27, 0.58);
+    backdrop-filter: blur(6px);
+}
+
+.blog-modal-dialog {
+    position: relative;
+    width: min(820px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 28px;
+    box-shadow: 0 24px 70px rgba(12, 38, 32, 0.26);
+    padding: 34px 34px 30px;
+    z-index: 1;
+}
+
+.blog-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(31, 90, 77, 0.08);
+    color: var(--theme-pink-dark);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.blog-modal-content h3 {
+    margin: 0 48px 18px 0;
+    color: var(--theme-ink);
+    font-size: 34px;
+    line-height: 1.12;
+    font-weight: 700;
+}
+
+.blog-modal-content p {
+    margin: 0 0 18px;
+    color: var(--theme-muted);
+    font-size: 16px;
+    line-height: 30px;
+}
+
+body.blog-modal-open {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 991px) {
+  section.blog-showcase {
+    padding: 86px 0 96px;
+  }
+
+  .blog-card-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  section.blog-showcase {
+    padding: 74px 0 84px;
+  }
+
+  .blog-intro {
+    margin: 0 auto 28px;
+  }
+
+  .blog-intro p,
+  .blog-card p,
+  .blog-modal-content p {
+    font-size: 15px;
+    line-height: 28px;
+  }
+
+  .blog-card img {
+    height: 200px;
+  }
+
+  .blog-card-body {
+    padding: 22px;
+  }
+
+  .blog-card h4 {
+    font-size: 21px;
+  }
+
+  .blog-modal {
+    padding: 16px;
+  }
+
+  .blog-modal-dialog {
+    padding: 24px 22px 22px;
+    border-radius: 22px;
+  }
+
+  .blog-modal-content h3 {
+    margin-right: 40px;
+    font-size: 28px;
+  }
+}

@@ -71,8 +71,59 @@
 
 	$( "#tabs" ).tabs();
 
+	(function initBlogModal() {
+	  var modal = document.getElementById('blog-modal');
+	  var modalContent = document.getElementById('blog-modal-content');
+	  var modalTitleId = 'blog-modal-title';
+	  if (!modal || !modalContent) {
+	    return;
+	  }
+
+	  function openBlog(targetId) {
+	    var article = document.getElementById(targetId);
+	    if (!article) {
+	      return;
+	    }
+	    modalContent.innerHTML = article.innerHTML;
+	    var title = modalContent.querySelector('h3');
+	    if (title) {
+	      title.id = modalTitleId;
+	    }
+	    modal.classList.add('is-visible');
+	    modal.setAttribute('aria-hidden', 'false');
+	    document.body.classList.add('blog-modal-open');
+	  }
+
+	  function closeBlog() {
+	    modal.classList.remove('is-visible');
+	    modal.setAttribute('aria-hidden', 'true');
+	    modalContent.innerHTML = '';
+	    document.body.classList.remove('blog-modal-open');
+	  }
+
+	  document.querySelectorAll('.blog-read-more').forEach(function(button) {
+	    button.addEventListener('click', function() {
+	      openBlog(button.getAttribute('data-blog-target'));
+	    });
+	  });
+
+	  modal.querySelectorAll('[data-blog-close]').forEach(function(element) {
+	    element.addEventListener('click', closeBlog);
+	  });
+
+	  document.addEventListener('keydown', function(event) {
+	    if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+	      closeBlog();
+	    }
+	  });
+	})();
+
 
 	(function init() {
+	  if (!document.querySelector(".days > .value")) {
+	    return;
+	  }
+
 	  function getTimeRemaining(endtime) {
 	    var t = Date.parse(endtime) - Date.parse(new Date());
 	    var seconds = Math.floor((t / 1000) % 60);
