@@ -118,6 +118,65 @@
 	  });
 	})();
 
+	(function initAchievementModal() {
+	  var modal = document.getElementById('achievement-modal');
+	  var dialog = document.getElementById('achievement-modal-dialog');
+	  var modalContent = document.getElementById('achievement-modal-content');
+	  var modalTitleId = 'achievement-modal-title';
+	  var styleClasses = Array.from({ length: 11 }, function(_, index) {
+	    return 'achievement-style-' + (index + 1);
+	  });
+	  if (!modal || !dialog || !modalContent) {
+	    return;
+	  }
+
+	  function openAchievement(targetId, styleClass) {
+	    var article = document.getElementById(targetId);
+	    if (!article) {
+	      return;
+	    }
+	    modalContent.innerHTML = article.innerHTML;
+	    var title = modalContent.querySelector('h3');
+	    if (title) {
+	      title.id = modalTitleId;
+	    }
+	    dialog.classList.remove.apply(dialog.classList, styleClasses);
+	    if (styleClass) {
+	      dialog.classList.add(styleClass);
+	    }
+	    modal.classList.add('is-visible');
+	    modal.setAttribute('aria-hidden', 'false');
+	    document.body.classList.add('achievement-modal-open');
+	  }
+
+	  function closeAchievement() {
+	    modal.classList.remove('is-visible');
+	    modal.setAttribute('aria-hidden', 'true');
+	    modalContent.innerHTML = '';
+	    dialog.classList.remove.apply(dialog.classList, styleClasses);
+	    document.body.classList.remove('achievement-modal-open');
+	  }
+
+	  document.querySelectorAll('.achievement-open').forEach(function(button) {
+	    button.addEventListener('click', function() {
+	      openAchievement(
+	        button.getAttribute('data-achievement-target'),
+	        button.getAttribute('data-achievement-style')
+	      );
+	    });
+	  });
+
+	  modal.querySelectorAll('[data-achievement-close]').forEach(function(element) {
+	    element.addEventListener('click', closeAchievement);
+	  });
+
+	  document.addEventListener('keydown', function(event) {
+	    if (event.key === 'Escape' && modal.classList.contains('is-visible')) {
+	      closeAchievement();
+	    }
+	  });
+	})();
+
 
 	(function init() {
 	  if (!document.querySelector(".days > .value")) {
