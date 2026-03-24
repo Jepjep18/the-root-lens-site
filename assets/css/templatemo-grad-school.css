@@ -2296,8 +2296,12 @@ section.courses .owl-carousel button.owl-dot {
 footer {
     background: linear-gradient(180deg, #edf5f1 0%, #dfeee8 100%);
     border-top: 1px solid rgba(31, 90, 77, 0.12);
-    padding: 0 0 36px;
+    padding: 0;
     text-align: center;
+}
+
+.footer-banner {
+    line-height: 0;
 }
 
 @media screen and (max-width: 950px) {
