@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
   <head>
@@ -43,12 +43,13 @@ https://templatemo.com/tm-557-grad-school
     <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
       <ul class="main-menu">
-        <li><a href="#section1">Home</a></li>
-        <li><a href="#section2">About Us</a></li>
-        <li><a href="#section4">Achievement</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="achievements.html">Achievement</a></li>
         <!-- <li><a href="#section5">Video</a></li> -->
-        <li><a href="#section6">Gallery</a></li>
-        <li><a href="#section7">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -685,6 +686,9 @@ https://templatemo.com/tm-557-grad-school
           if($(e.target).hasClass('external')) {
             return;
           }
+          if ($(this).attr('href').charAt(0) !== '#') {
+            return;
+          }
           e.preventDefault();
           $('#menu').removeClass('active');
           showSection($(this).attr('href'), true);
@@ -696,3 +700,4 @@ https://templatemo.com/tm-557-grad-school
     </script>
 </body>
 </html>
+
